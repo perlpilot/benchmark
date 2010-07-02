@@ -10,7 +10,7 @@ my sub time_it (Int $count where { $_ > 0 }, Code $code) {
 }
 
 multi sub timethis (Int $count, Str $code) is export {
-    my $routine = eval "sub \{ {$code} \}";
+    my $routine = eval "sub \{ $code \}";
     return time_it($count, $routine);
 }
 
