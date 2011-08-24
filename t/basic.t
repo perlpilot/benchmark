@@ -1,6 +1,6 @@
 use Benchmark;
 use Test;
-plan 19;
+plan 23;
 
 my $count = 1;
 
@@ -15,3 +15,7 @@ ok $a ~~ Positional;
 my %h = foo => $code-sub, bar => $code-str;
 $a = timethese 4, %h;           # 8 runs
 ok $a ~~ Hash;
+ok $a.exists: 'foo';
+ok $a.exists: 'bar';
+ok $a<foo> ~~ Positional;
+ok $a<bar> ~~ Positional;
